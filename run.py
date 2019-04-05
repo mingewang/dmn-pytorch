@@ -52,7 +52,8 @@ def run_epoch(m, d, ep, mode='tr', set_num=1, is_train=True):
             nn.utils.clip_grad_norm(m.parameters(), m.config.grad_max_norm)
             m.optimizer.step()
 
-        total_metrics[0] += total_loss.data[0]
+        #total_metrics[0] += total_loss.data[0].item()
+        total_metrics[0] += total_loss.data.item()
         total_metrics[1] += metrics
         total_step += 1.0
         
